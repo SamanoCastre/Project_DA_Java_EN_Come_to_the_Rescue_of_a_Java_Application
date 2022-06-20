@@ -7,7 +7,7 @@ import java.util.SortedMap;
  * Anything that will sort symptoms alphabetically
  * The important part is the count of the number of occurrence of each symptom written in the destination file
  * 
- * The implementation needs return a SortedMap of symtoms sorted alphabetically
+ * The implementation needs return a SortedMap of Symptoms sorted alphabetically
  */
 public interface ISymptomSort {
 	
@@ -18,5 +18,5 @@ public interface ISymptomSort {
 	 * @param symptoms
 	 * @return
 	 */
-	SortedMap<String,Integer> SortSymtoms(List<String> symptoms);
+	SortedMap<String,Integer> SortSymptoms(List<String> symptoms);
 }
