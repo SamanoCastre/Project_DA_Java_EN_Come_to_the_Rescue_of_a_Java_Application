@@ -12,10 +12,10 @@ public class AnalyticsCounter {
 			
 			WriteSymptomDataToFile writerSD = new WriteSymptomDataToFile(destination);
 			
-			writerSD.writeSymptoms(readerSD.GetSymptoms());
+			writerSD.WriteSymptoms(readerSD.GetSymptoms());
 		}
 		catch(IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

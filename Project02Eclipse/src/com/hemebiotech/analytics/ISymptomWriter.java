@@ -22,5 +22,5 @@ public interface ISymptomWriter {
 	 * @param symptoms
 	 * @throws IOException
 	 */
-	void writeSymptoms(List<String> symptoms) throws IOException;
+	void WriteSymptoms(List<String> symptoms) throws IOException;
 }
