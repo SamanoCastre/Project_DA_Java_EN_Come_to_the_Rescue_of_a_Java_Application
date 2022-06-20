@@ -1,6 +1,5 @@
 package com.hemebiotech.analytics;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.SortedMap;
 
@@ -18,7 +17,6 @@ public interface ISymptomSort {
 	 * if the given list as parameter is empty, an empty map will be returned.
 	 * @param symptoms
 	 * @return
-	 * @throws IOException
 	 */
-	SortedMap<String,Integer> SortSymtoms(List<String> symptoms) throws IOException;
+	SortedMap<String,Integer> SortSymtoms(List<String> symptoms);
 }

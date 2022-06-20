@@ -23,7 +23,7 @@ private String filepath;
 	}
 	
 	@Override
-	public SortedMap<String,Integer> SortSymtoms(List<String> symptoms) throws IOException {
+	public SortedMap<String,Integer> SortSymtoms(List<String> symptoms) {
 		SortedMap<String, Integer> symptomsOccurrencesMap = new TreeMap<String, Integer>();
 		
 		for (String symptom : symptoms) {
