@@ -12,11 +12,10 @@ import java.util.TreeMap;
  * Simple brute force implementation
  *
  */
-public class WriteSymptomDataToFile implements ISymptomWriter{
+public class WriteSymptomDataToFile implements ISymptomWriter, ISymptomSort{
 private String filepath;
 	
 	/**
-	 * 
 	 * @param filepath a full or partial path to store symptoms line
 	 */
 	public WriteSymptomDataToFile (String filepath) {
@@ -24,25 +23,27 @@ private String filepath;
 	}
 	
 	@Override
-	public void writeSymptoms(List<String> symptoms) throws IOException {
-		if(!symptoms.isEmpty()) {
+	public SortedMap<String,Integer> SortSymtoms(List<String> symptoms) throws IOException {
+		SortedMap<String, Integer> symptomsOccurrencesMap = new TreeMap<String, Integer>();
+		
+		for (String symptom : symptoms) {
+			Integer occurrence = 1;
 			
+			if(symptomsOccurrencesMap.containsKey(symptom)) {
+				occurrence =  symptomsOccurrencesMap.get(symptom) + 1;
+			}
+			symptomsOccurrencesMap.put(symptom, occurrence);
+		}
+		return symptomsOccurrencesMap;
+	}
+	
+	@Override
+	public void WriteSymptoms(List<String> symptoms) throws IOException {
+		if(!symptoms.isEmpty()) {
 			BufferedWriter bWriter = null;
 			try {	
-				
-				SortedMap<String, Integer> symptomsOccurrencesMap = new TreeMap<String, Integer>();
-				
-				for (String symptom : symptoms) {
-					Integer occurrence = 1;
-					
-					if(symptomsOccurrencesMap.containsKey(symptom)) {
-						occurrence =  symptomsOccurrencesMap.get(symptom) + 1;
-					}
-					symptomsOccurrencesMap.put(symptom, occurrence);
-				}
-				
+				SortedMap<String, Integer> symptomsOccurrencesMap = this.SortSymtoms(symptoms);
 				bWriter = new BufferedWriter(new FileWriter (this.filepath));
-				
 				for (Map.Entry<String, Integer> entry : symptomsOccurrencesMap.entrySet()) {
 					bWriter.write(entry.getKey() + ": " + entry.getValue() + "\n");
 				}
@@ -52,7 +53,9 @@ private String filepath;
 				throw e;
 			}
 			finally {
-				bWriter.close();
+				if(bWriter != null) {
+					bWriter.close();
+				}
 			}
 		}
 	}

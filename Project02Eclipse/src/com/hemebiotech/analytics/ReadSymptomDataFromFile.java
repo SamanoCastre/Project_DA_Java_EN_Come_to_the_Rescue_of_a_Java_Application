@@ -43,7 +43,9 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				throw e;
 			}
 			finally {
-				reader.close();
+				if(reader != null) {
+					reader.close();
+				}
 			}
 		}
 		return result;
