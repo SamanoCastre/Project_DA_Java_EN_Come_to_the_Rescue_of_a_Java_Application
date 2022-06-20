@@ -23,7 +23,7 @@ private String filepath;
 	}
 	
 	@Override
-	public SortedMap<String,Integer> SortSymtoms(List<String> symptoms) throws IOException {
+	public SortedMap<String,Integer> SortSymptoms(List<String> symptoms) {
 		SortedMap<String, Integer> symptomsOccurrencesMap = new TreeMap<String, Integer>();
 		
 		for (String symptom : symptoms) {
@@ -42,7 +42,7 @@ private String filepath;
 		if(!symptoms.isEmpty()) {
 			BufferedWriter bWriter = null;
 			try {	
-				SortedMap<String, Integer> symptomsOccurrencesMap = this.SortSymtoms(symptoms);
+				SortedMap<String, Integer> symptomsOccurrencesMap = this.SortSymptoms(symptoms);
 				bWriter = new BufferedWriter(new FileWriter (this.filepath));
 				for (Map.Entry<String, Integer> entry : symptomsOccurrencesMap.entrySet()) {
 					bWriter.write(entry.getKey() + ": " + entry.getValue() + "\n");
